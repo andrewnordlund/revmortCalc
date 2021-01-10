@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Proof of Concept Reverse Mortgage Affordability Calculator</title>
+		<script src="revmortCalc.js"></script>
+		<link rel="Stylesheet" type="text/css" href="revmortCalc.css" />
+	</head>
+	<body>
+		<header><h1>Proof of Concept Reverse Mortgage Affordability Calculator</h1></header>
+		<main>
+		<div id="cont">
+			<div id="warningHolder">
+				<p><strong>WARNING:</strong> This is a proof-of-concept calculator designed to give a general idea of how big of a mortgage you can afford defined by how much you can afford per payment.</p></div>
+			<div id="formHolder">
+				<h2>Details</h2>
+				<div class="fieldHolder">
+					<label for="paymentAmnt">I can afford</label>
+					$ <input id="paymentAmnt" name="paymentAmnt">
+				</div>
+				<div class="fieldHolder">
+					<label for="interestRate">Current Interest Rate (ex: 2.64)</label>
+					<input id="interestRate" name="interestRate">
+				</div>
+				<div class="fieldHolder">
+					<label for="amort">Amortization Period (years)</label>
+					<input id="amort" name="amort">
+				</div>
+				<div class="fieldHolder">
+					<button id="calcBtn">Calculate</button>
+				</div>
+			</div>
+			<div id="resultsHolder">
+				<p><span id="youCanAfford">You can afford $<output id="resultsOutput" aria-describedby="youCanAfford"></output>.</p>
+			</div>
+			</div>
+		</main>
+		<footer>
+		<p>Co-hosted at <a href="https://www.nordburg.ca/calculators/revmortCalc/revmortCalc.html">nordburg.ca"</a> and <a href="https://andrewnordlund.github.io/revmortCalc/revmortCalc.html">GitHub Pages</a>.  Contribute to <a href="https://github.com/andrewnordlund/revmortCalc">the GitHub repo</a> if you so desire.</p>
+		</footer>
+		<script type="text/Javascript">
+		init();
+		</script>
+	</body>
+</html>
