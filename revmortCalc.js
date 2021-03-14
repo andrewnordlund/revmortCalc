@@ -3,6 +3,7 @@ var fcs = {
 	"paymentAmnt" : null,
 	"interestRate" : null,
 	"amort" : null,
+	"amortOutput" : null,
 	"calcBtn" : null,
 	"resultsOutput" : null
 	/*
@@ -22,6 +23,7 @@ function init () {
 				fcs[control].addEventListener("click", calculate, false);
 			}
 		}
+		fcs["amortOutput"].textContent = fcs["amort"].value;
 	}
 	catch (ex) {
 		console.error ("Caught exception: " + ex.message);
@@ -35,6 +37,7 @@ function calculate () {
 	let c = fcs["interestRate"].value /1200;
 	let d = (c+1);
 	let n = fcs["amort"].value * 12;
+	fcs["amortOutput"].textContent = fcs["amort"].value;
 	if (dbug) {
 		console.log ("Calculating payment of $" + payment + " at interest rate of " + c + "% for " + n + " months.");
 		console.log ("d: " + d + ".");
