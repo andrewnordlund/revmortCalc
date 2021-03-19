@@ -1,14 +1,14 @@
-var dbug = true;
+var dbug = !true;
 var fcs = {
 	"paymentAmnt" : null,
 	"interestRate" : null,
 	"amort" : null,
 	"amortOutput" : null,
 	"calcBtn" : null,
-	"resultsOutput" : null
-	/*
-	"investmentType" : null,
-	"rprovince" : null,
+	"resultsOutput" : null,
+	"fortnight" : null,
+	"month" : null,
+		/*
 	"retirementIncome" : null,
 	 */
 }
@@ -21,6 +21,8 @@ function init () {
 				fcs[control].addEventListener("change", calculate, false);
 			} else if (control == "calcBtn") {
 				fcs[control].addEventListener("click", calculate, false);
+			} else if (false && dbug && (control == "month" || control == "fortnight")) {
+				console.log (control + ": " + fcs[control].checked +".");
 			}
 		}
 		fcs["amortOutput"].textContent = fcs["amort"].value;
@@ -33,13 +35,15 @@ function init () {
 
 function calculate () {
 	if (dbug) console.log ("Calculating....");
+	let paymentPeriod = (fcs["month"].checked ? 12 : 26);
+	
 	let payment = fcs["paymentAmnt"].value;
-	let c = fcs["interestRate"].value /1200;
+	let c = fcs["interestRate"].value /(paymentPeriod * 100);
 	let d = (c+1);
-	let n = fcs["amort"].value * 12;
+	let n = fcs["amort"].value * paymentPeriod;
 	fcs["amortOutput"].textContent = fcs["amort"].value;
 	if (dbug) {
-		console.log ("Calculating payment of $" + payment + " at interest rate of " + c + "% for " + n + " months.");
+		console.log ("Calculating payment of $" + payment + " at interest rate of " + c + "% for " + n + " " + paymentPeriod + ".");
 		console.log ("d: " + d + ".");
 		console.log ("d^n: " + d**n + ".");
 	}
